@@ -8,6 +8,8 @@ set.expandtab = true
 set.smarttab = true
 set.shiftwidth = 4
 set.tabstop = 4
+set.softtabstop = 4
+
 
 local let = vim.g
 set.wrap = false
@@ -28,7 +30,7 @@ local opts = {noremap = true, silent = true}
 
 map("n", "<leader><Tab>", ":NvimTreeToggle<CR>", opts)
 map("n", "<leader>f", ":Telescope find_files<CR>", opts)
-map("n", "<leader>v", ":Neoformat<CR>", opts)
+map("n", "<leader>v", "gg=G<CR>", opts)
 map("n", "L", ":BufferLineCycleNext<CR>", opts)
 map("n", "H", ":BufferLineCyclePrev<CR>", opts)
 map("n", "<leader>x", ":bdelete<CR>", opts)
