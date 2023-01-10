@@ -10,7 +10,6 @@ set.shiftwidth = 4
 set.tabstop = 4
 set.softtabstop = 4
 
-
 local let = vim.g
 set.wrap = false
 set.scrolloff = 10
@@ -30,7 +29,7 @@ local opts = {noremap = true, silent = true}
 
 map("n", "<leader><Tab>", ":NvimTreeToggle<CR>", opts)
 map("n", "<leader>f", ":Telescope find_files<CR>", opts)
-map("n", "<leader>v", "gg=G<CR>", opts)
+map("n", "<leader>v", "gg=G<C-o>", opts)
 map("n", "L", ":BufferLineCycleNext<CR>", opts)
 map("n", "H", ":BufferLineCyclePrev<CR>", opts)
 map("n", "<leader>x", ":bdelete<CR>", opts)
@@ -39,8 +38,8 @@ map("n", "∆", ":m+<CR>", opts)
 map("n", "˚", ":m--<CR>", opts)
 map("v","∆", ":m '>+1<CR>gv=gv",opts)
 map("v","˚" ,":m '<-2<CR>gv=gv",opts)
-
-
+map("n","<leader>s",":w<CR>",opts)
+map("n","<leader>q",":wq<CR>",opts)
 -- Disable base plugins
 let.loaded_matchparen        = 1
 let.loaded_matchit           = 1
