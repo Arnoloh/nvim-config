@@ -1,7 +1,6 @@
 require("plugins")
 
 local set = vim.opt
-local let = vim.g
 
 
 -- General options
@@ -10,6 +9,7 @@ set.smarttab = true
 set.shiftwidth = 4
 set.tabstop = 4
 
+local let = vim.g
 set.wrap = false
 set.scrolloff = 10
 set.fileencoding = 'utf-8'
@@ -33,12 +33,10 @@ map("n", "L", ":BufferLineCycleNext<CR>", opts)
 map("n", "H", ":BufferLineCyclePrev<CR>", opts)
 map("n", "<leader>x", ":bdelete<CR>", opts)
 map("n", "<leader>X", ":bdelete!<CR>", opts)
-map("n", "<A-j>", ":m+<CR>", opts)
-map("n", "<A-k>", ":m--<CR>", opts)
-map("n", "gd", ":Lspsaga lsp_finder<CR>", opts)
-map("n", "gr", ":Lspsaga rename<CR>", opts)
-map("n", "gp", ":Lspsaga preview_definition<CR>", opts)
-map("n", "gh", ":Lspsaga hover_doc<CR>", opts)
+map("n", "∆", ":m+<CR>", opts)
+map("n", "˚", ":m--<CR>", opts)
+map("v","∆", ":m '>+1<CR>gv=gv",opts)
+map("v","˚" ,":m '<-2<CR>gv=gv",opts)
 
 
 -- Disable base plugins
