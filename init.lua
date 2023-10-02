@@ -1,7 +1,7 @@
 require("plugins")
 
 local set = vim.opt
-local os = vim.loop.os_uname().sysname
+
 
 -- General options
 set.expandtab = true
@@ -34,17 +34,10 @@ map("n", "L", ":BufferLineCycleNext<CR>", opts)
 map("n", "H", ":BufferLineCyclePrev<CR>", opts)
 map("n", "<leader>x", ":bdelete<CR>", opts)
 map("n", "<leader>X", ":bdelete!<CR>", opts)
-if os == "Darwin" then
-    map("n", "∆", ":m+<CR>", opts)
-    map("n", "˚", ":m--<CR>", opts)
-    map("v","∆", ":m '>+1<CR>gv=gv",opts)
-    map("v","˚" ,":m '<-2<CR>gv=gv",opts)
-else
-    map("n","<A-j>",":m+<CR>",opts)
-    map("n", "<A-k>", ":m--<CR>", opts)
-    map("v","<A-j>", ":m '>+1<CR>gv=gv",opts)
-    map("v","<A-k>" ,":m '<-2<CR>gv=gv",opts)
-end
+map("n", "∆", ":m+<CR>", opts)
+map("n", "˚", ":m--<CR>", opts)
+map("v","∆", ":m '>+1<CR>gv=gv",opts)
+map("v","˚" ,":m '<-2<CR>gv=gv",opts)
 map("n","<leader>s",":w<CR>",opts)
 map("n","<leader>q",":wq<CR>",opts)
 -- Disable base plugins
