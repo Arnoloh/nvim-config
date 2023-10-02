@@ -2,7 +2,8 @@ require("plugins")
 
 local set = vim.opt
 
-
+vim.opt.background = "dark" -- set this to dark or light
+vim.cmd("colorscheme oxocarbon")
 -- General options
 set.expandtab = true
 set.smarttab = true
