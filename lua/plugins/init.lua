@@ -3,7 +3,6 @@ vim.cmd([[packadd packer.nvim]])
 return require("packer").startup(function(use)
     use("wbthomason/packer.nvim")
     --format
-    use('sbdchd/neoformat')
 
     -- LSP & Completion
     use("onsails/lspkind-nvim")
@@ -18,6 +17,12 @@ return require("packer").startup(function(use)
     use("windwp/nvim-autopairs")
     use("lewis6991/gitsigns.nvim")
     use("glepnir/dashboard-nvim")
+    use {
+        'rhysd/vim-clang-format',
+        requires = {
+            'kana/vim-operator-user'
+        }
+    }
     use({
         "kyazdani42/nvim-tree.lua",
         requires = {

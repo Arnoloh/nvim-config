@@ -21,7 +21,6 @@ set.number = true
 set.cursorline = true
 set.hidden = true
 
-
 -- Keymaps
 let.mapleader = " "
 local map = vim.api.nvim_set_keymap
@@ -29,7 +28,7 @@ local opts = {noremap = true, silent = true}
 
 map("n", "<leader><Tab>", ":NvimTreeToggle<CR>", opts)
 map("n", "<leader>f", ":Telescope find_files<CR>", opts)
-map("n", "<leader>v", "gg=G<C-o>", opts)
+map("n", "<leader>v", ":ClangFormat<CR>", opts)
 map("n", "L", ":BufferLineCycleNext<CR>", opts)
 map("n", "H", ":BufferLineCyclePrev<CR>", opts)
 map("n", "<leader>x", ":bdelete<CR>", opts)
