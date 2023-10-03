@@ -1,6 +1,13 @@
 vim.g.mapleader = " "
 require("config.lazy")
+require("toggleterm").setup{}
 local cmp = require('cmp')
+local has_words_before = function()
+  unpack = unpack or table.unpack
+  local line, col = unpack(vim.api.nvim_win_get_cursor(0))
+  return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s") == nil
+end
+local luasnip = require("luasnip")
 cmp.setup({
     snippet = {
         expand = function(args)
@@ -141,10 +148,13 @@ set.hidden = true
 -- Keymaps
 local map = vim.api.nvim_set_keymap
 local opts = {noremap = true, silent = true}
+vim.cmd('set list listchars=tab:»·,trail:·,eol:$')
 
 map("n", "<leader><Tab>", ":NvimTreeToggle<CR>", opts)
 map("n", "<leader>f", ":Telescope find_files<CR>", opts)
 map("n", "<leader>v", "gg=G", opts)
+map("n", "<leader>t", ":TermExec cmd=zsh<CR>", opts)
+map("t", "<leader>x", "<C-\\><C-n><C-w>h",opts)
 map("n", "L", ":BufferLineCycleNext<CR>", opts)
 map("n", "H", ":BufferLineCyclePrev<CR>", opts)
 map("n", "<leader>x", ":bdelete<CR>", opts)
