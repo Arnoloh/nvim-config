@@ -10,7 +10,7 @@ return {
             { "<leader>s", desc = "start incremental selection" },
         },
         opts = {
-            ensure_installed = { "c", "lua", "vim", "vimdoc" },
+            ensure_installed = { "c", "lua", "vim", "vimdoc", "make" , "rust" },
             auto_install = true,
             highlight = { enable = true },
             indent = { enable = true },

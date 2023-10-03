@@ -1,3 +1,5 @@
+vim.g.mapleader = " "
+require("config.lazy")
 local cmp = require('cmp')
 cmp.setup({
     snippet = {
@@ -5,8 +7,7 @@ cmp.setup({
             luasnip.lsp_expand(args.body)
         end
     },
-    mapping = {
-        ['<C-b>'] = cmp.mapping(cmp.mapping.scroll_docs(-4), { 'i', 'c' }),
+    mapping = { ['<C-b>'] = cmp.mapping(cmp.mapping.scroll_docs(-4), { 'i', 'c' }),
         ['<C-f>'] = cmp.mapping(cmp.mapping.scroll_docs(4), { 'i', 'c' }),
         ['<C-Space>'] = cmp.mapping(cmp.mapping.complete(), { 'i', 'c' }),
         ["<C-e>"] = cmp.mapping.close(),
@@ -123,9 +124,7 @@ set.tabstop = 4
 set.softtabstop = 4
 
 local let = vim.g
-let.mapleader = " "
 
-require("config.lazy")
 require("config.lualine-config")
 require("config.telescope-config")
 
