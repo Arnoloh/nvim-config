@@ -145,6 +145,8 @@ set.number = true
 set.cursorline = true
 set.hidden = true
 
+
+local os = vim.loop.os_uname().sysname
 -- Keymaps
 local map = vim.api.nvim_set_keymap
 local opts = {noremap = true, silent = true}
