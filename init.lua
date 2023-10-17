@@ -1,14 +1,18 @@
 vim.g.mapleader = " "
 require("config.lazy")
+require("lspconfig").clangd.setup({})
 require("toggleterm").setup{}
 local cmp = require('cmp')
 local has_words_before = function()
-  unpack = unpack or table.unpack
-  local line, col = unpack(vim.api.nvim_win_get_cursor(0))
-  return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s") == nil
+    unpack = unpack or table.unpack
+    local line, col = unpack(vim.api.nvim_win_get_cursor(0))
+    return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s") == nil
 end
 local luasnip = require("luasnip")
 cmp.setup({
+    enabled = function()
+        return vim.api.nvim_buf_get_option(0, 'modifiable')
+    end,
     snippet = {
         expand = function(args)
             luasnip.lsp_expand(args.body)
@@ -30,9 +34,9 @@ cmp.setup({
             elseif has_words_before() then
                 cmp.complete()
             else
-                fallback()
+            fallback()
             end
-        end, { "i", "s" }),
+            end, { "i", "s" }),
 
         ["<S-Tab>"] = cmp.mapping(function(fallback)
             if cmp.visible() then
@@ -40,9 +44,9 @@ cmp.setup({
             elseif luasnip.jumpable(-1) then
                 luasnip.jump(-1)
             else
-                fallback()
+            fallback()
             end
-        end, { "i", "s" })
+            end, { "i", "s" })
     },
     sources = {
         { name = 'nvim_lsp' },
@@ -92,11 +96,7 @@ cmp.setup({
     }
 })
 
-
-cmp.setup.cmdline({ '/', '?' }, {
-    mapping = cmp.mapping.preset.cmdline(),
-    sources = {{ name = 'buffer' }}
-})
+require("ibl").setup()
 
 cmp.setup.cmdline(':', {
     mapping = cmp.mapping.preset.cmdline(),
@@ -106,16 +106,16 @@ cmp.setup.cmdline(':', {
     )
 })
 require("nvim-tree").setup({
-  sort_by = "case_sensitive",
-  view = {
-    width = 30,
-  },
-  renderer = {
-    group_empty = true,
-  },
-  filters = {
-    dotfiles = true,
-  },
+    sort_by = "case_sensitive",
+    view = {
+        width = 30,
+    },
+    renderer = {
+        group_empty = true,
+    },
+    filters = {
+        dotfiles = true,
+    },
 })
 require('neoscroll').setup()
 require("bufferline").setup{}
@@ -152,19 +152,29 @@ vim.cmd('set list listchars=tab:»·,trail:·,eol:$')
 
 map("n", "<leader><Tab>", ":NvimTreeToggle<CR>", opts)
 map("n", "<leader>f", ":Telescope find_files<CR>", opts)
-map("n", "<leader>v", "gg=G", opts)
+--map("n", "<leader>v", "gg=G<C-o>", opts)
+map("n", "<leader>v", ":ClangFormat<CR>", opts)
 map("n", "<leader>t", ":TermExec cmd=zsh<CR>", opts)
 map("t", "<leader>x", "<C-\\><C-n><C-w>h",opts)
 map("n", "L", ":BufferLineCycleNext<CR>", opts)
 map("n", "H", ":BufferLineCyclePrev<CR>", opts)
 map("n", "<leader>x", ":bdelete<CR>", opts)
 map("n", "<leader>X", ":bdelete!<CR>", opts)
-map("n", "<A-j>", ":m+<CR>", opts)
-map("n", "<A-k>", ":m--<CR>", opts)
-map("v","<A-j>", ":m '>+1<CR>gv=gv",opts)
-map("v","<A-k>" ,":m '<-2<CR>gv=gv",opts)
+if os == "Darwin" then
+    map("n", "∆", ":m+<CR>", opts)
+    map("n", "˚", ":m--<CR>", opts)
+    map("v","∆", ":m '>+1<CR>gv=gv",opts)
+    map("v","˚" ,":m '<-2<CR>gv=gv",opts)
+else
+    map("n","<A-j>",":m+<CR>",opts)
+    map("n", "<A-k>", ":m--<CR>", opts)
+    map("v","<A-j>", ":m '>+1<CR>gv=gv",opts)
+    map("v","<A-k>" ,":m '<-2<CR>gv=gv",opts)
+end
 map("n","<leader>s",":w<CR>",opts)
 map("n","<leader>q",":wq<CR>",opts)
+map("n","<leader>r",":w<CR>:make run<CR>",opts)
+
 -- Disable base plugins
 let.loaded_matchparen        = 1
 let.loaded_matchit           = 1

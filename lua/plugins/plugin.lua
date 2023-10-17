@@ -1,10 +1,12 @@
 return {
-'L3MON4D3/LuaSnip',
-'saadparwaiz1/cmp_luasnip',
+    'L3MON4D3/LuaSnip',
+    'saadparwaiz1/cmp_luasnip',
     {
         'akinsho/toggleterm.nvim', version = "*", config = true
     },
-    'neovim/nvim-lspconfig',
+    -- LSP
+    'williamboman/nvim-lsp-installer', 
+    'neovim/nvim-lspconfig' ,
     { "nvim-telescope/telescope.nvim", dependencies = "tsakirist/telescope-lazy.nvim" },
     "nvim-lua/plenary.nvim",
     {
@@ -12,7 +14,6 @@ return {
         build = ":TSUpdate",
         event = { "BufReadPost", "BufNewFile" },
         keys = {
-            { "<leader>s", desc = "start incremental selection" },
         },
         opts = {
             ensure_installed = { "c", "lua", "vim", "vimdoc", "make" , "rust" },
@@ -22,7 +23,6 @@ return {
             incremental_selection = {
                 enable = true,
                 keymaps = {
-                    init_selection = "<leader>s",
                     node_incremental = "<Space>",
                     scope_incremental = false,
                     node_decremental = "<BS>",
@@ -33,6 +33,7 @@ return {
             require("nvim-treesitter.configs").setup(opts)
         end,
     },
+    "lukas-reineke/indent-blankline.nvim",
     "nyoom-engineering/oxocarbon.nvim",
     'hrsh7th/cmp-nvim-lsp',
     'hrsh7th/cmp-buffer',
@@ -55,7 +56,7 @@ return {
         'folke/which-key.nvim',
         lazy = true,
     },
-   'kyazdani42/nvim-tree.lua', requires = { 'kyazdani42/nvim-web-devicons' }, tag = 'nightly',
+    'kyazdani42/nvim-tree.lua', requires = { 'kyazdani42/nvim-web-devicons' }, tag = 'nightly',
     'rhysd/vim-clang-format',
     requires = {
         'kana/vim-operator-user'
@@ -69,5 +70,5 @@ return {
     event = "InsertEnter",
     opts = {} ,
     'petertriho/cmp-git',
-    'karb94/neoscroll.nvim'
+    'karb94/neoscroll.nvim',
 }
