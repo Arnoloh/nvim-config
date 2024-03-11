@@ -133,7 +133,7 @@ set.softtabstop = 4
 local let = vim.g
 
 require("config.lualine-config")
-require("config.telescope-config")
+local telescope = require("config.telescope-config")
 
 set.wrap = false
 set.scrolloff = 10
@@ -174,8 +174,6 @@ else
     map("v","<A-k>" ,":m '<-2<CR>gv=gv",opts)
 end
 map("n","<leader>s",":w<CR>",opts)
-map("n","<leader>q",":wq<CR>",opts)
-map("n","<leader>r",":w<CR>:make run<CR>",opts)
 
 -- Disable base plugins
 let.loaded_matchparen        = 1

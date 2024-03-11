@@ -4,6 +4,12 @@ return {
     {
         'akinsho/toggleterm.nvim', version = "*", config = true
     },
+    -- FIXME
+    {
+        "folke/todo-comments.nvim",
+        dependencies={"nvim-lua/plenary.nvim"},
+        opts={}
+    },
     -- LSP
     'williamboman/nvim-lsp-installer', 
     'neovim/nvim-lspconfig' ,
