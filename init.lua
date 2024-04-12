@@ -1,4 +1,10 @@
 vim.g.mapleader = " "
+require('gitblame').setup {
+     --Note how the `gitblame_` prefix is omitted in `setup`
+    enabled = false,
+}
+let g:gitblame_enabled = 0
+
 require("config.lazy")
 require("lspconfig").clangd.setup({})
 require("toggleterm").setup{}
@@ -162,6 +168,7 @@ map("n", "L", ":BufferLineCycleNext<CR>", opts)
 map("n", "H", ":BufferLineCyclePrev<CR>", opts)
 map("n", "<leader>x", ":bdelete<CR>", opts)
 map("n", "<leader>X", ":bdelete!<CR>", opts)
+map("n","gd",":Telescope lsp_definitions<CR>",opts)
 if os == "Darwin" then
     map("n", "∆", ":m+<CR>", opts)
     map("n", "˚", ":m--<CR>", opts)

@@ -4,7 +4,10 @@ return {
     {
         'akinsho/toggleterm.nvim', version = "*", config = true
     },
+    --git blame
+    'f-person/git-blame.nvim',
     -- FIXME
+
     {
         "folke/todo-comments.nvim",
         dependencies={"nvim-lua/plenary.nvim"},
@@ -49,10 +52,12 @@ return {
     'hrsh7th/cmp-cmdline',
     'hrsh7th/nvim-cmp',
     {
-        'akinsho/bufferline.nvim',
-        dependencies = 'nvim-tree/nvim-web-devicons'
+        'akinsho/bufferline.nvim'
     },
 
+    { 'nvim-tree/nvim-web-devicons',
+        commit = "20921d33c605ba24c8d0b76b379a54a9c83ba170"
+    },
     -- Lualine (THE NEW EXTENSION ADDED IN CONFIGURATION)
     {
         'nvim-lualine/lualine.nvim',
