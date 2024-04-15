@@ -1,13 +1,16 @@
 vim.g.mapleader = " "
-require('gitblame').setup {
-     --Note how the `gitblame_` prefix is omitted in `setup`
-    enabled = false,
-}
-let g:gitblame_enabled = 0
 
 require("config.lazy")
 require("lspconfig").clangd.setup({})
 require("toggleterm").setup{}
+
+-- GitBlame
+require('gitblame').setup {
+    --Note how the `gitblame_` prefix is omitted in `setup`
+    message_template = "<author> • <summary>",
+    enabled = false,
+}
+-- End GitBlame
 local cmp = require('cmp')
 local has_words_before = function()
     unpack = unpack or table.unpack
@@ -40,9 +43,9 @@ cmp.setup({
             elseif has_words_before() then
                 cmp.complete()
             else
-            fallback()
+                fallback()
             end
-            end, { "i", "s" }),
+        end, { "i", "s" }),
 
         ["<S-Tab>"] = cmp.mapping(function(fallback)
             if cmp.visible() then
@@ -50,9 +53,9 @@ cmp.setup({
             elseif luasnip.jumpable(-1) then
                 luasnip.jump(-1)
             else
-            fallback()
+                fallback()
             end
-            end, { "i", "s" })
+        end, { "i", "s" })
     },
     sources = {
         { name = 'nvim_lsp' },
@@ -160,6 +163,8 @@ vim.cmd('set list listchars=tab:»·,trail:·,eol:$')
 
 map("n", "<leader><Tab>", ":NvimTreeToggle<CR>", opts)
 map("n", "<leader>f", ":Telescope find_files<CR>", opts)
+map("n", "<leader>r", ":Telescope lsp_dynamic_workspace_symbols<CR>", opts)
+map("n","<leader>b",":GitBlameToggle<CR>",opts)
 --map("n", "<leader>v", "gg=G<C-o>", opts)
 map("n", "<leader>v", ":ClangFormat<CR>", opts)
 map("n", "<leader>t", ":TermExec cmd=zsh<CR>", opts)
@@ -198,3 +203,5 @@ let.loaded_netrw             = 1
 let.loaded_netrwPlugin       = 1
 let.loaded_tutor_mode_plugin = 1
 let.loaded_remote_plugins    = 1
+let.gitblame_enabled = 0
+
