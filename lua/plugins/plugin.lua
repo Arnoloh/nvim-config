@@ -7,7 +7,13 @@ return {
     --git blame
     'f-person/git-blame.nvim',
     -- FIXME
-
+    -- Comment 
+    {
+    'numToStr/Comment.nvim',
+    opts = {
+        -- add any options here
+        },
+    },
     {
         "folke/todo-comments.nvim",
         dependencies={"nvim-lua/plenary.nvim"},

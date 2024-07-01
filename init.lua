@@ -3,6 +3,19 @@ vim.g.mapleader = " "
 require("config.lazy")
 require("lspconfig").clangd.setup({})
 require("toggleterm").setup{}
+require('Comment').setup({
+    padding = true,
+    sticky = false,
+            toggler = {
+                line = '<leader>/',
+                block = '<leader>bc',
+            },
+            opleader = {
+                line = '<leader>/',
+                block = '<leader>b',
+            },
+
+})
 
 -- GitBlame
 require('gitblame').setup {
