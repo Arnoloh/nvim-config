@@ -2,6 +2,11 @@ vim.g.mapleader = " "
 
 require("config.lazy")
 require("lspconfig").clangd.setup({})
+require("lspconfig").tsserver.setup({
+ on_attach = on_attach,
+  filetypes = { "typescript", "typescriptreact", "typescript.tsx", "javascript", "javascriptreact", "javascript.jsx" },
+  capabilities = capabilities
+})
 require("toggleterm").setup{}
 require('Comment').setup({
     padding = true,
@@ -156,6 +161,7 @@ local let = vim.g
 
 require("config.lualine-config")
 local telescope = require("config.telescope-config")
+
 
 set.wrap = false
 set.scrolloff = 10
