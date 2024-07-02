@@ -4,6 +4,12 @@ require("config.lazy")
 require("config.lsp")
 require("config.comment")
 require("config.gitblame")
+require("config.lualine-config")
+local telescope = require("config.telescope-config")
+
+require('neoscroll').setup()
+require("bufferline").setup()
+require('nvim-autopairs').setup()
 
 local cmp = require('cmp')
 local has_words_before = function()
@@ -120,9 +126,7 @@ require("nvim-tree").setup({
         dotfiles = true,
     },
 })
-require('neoscroll').setup()
-require("bufferline").setup()
-require('nvim-autopairs').setup({})
+
 local set = vim.opt
 vim.opt.background = "dark" -- set this to dark or light
 vim.cmd.colorscheme "oxocarbon"
@@ -135,8 +139,6 @@ set.softtabstop = 4
 
 local let = vim.g
 
-require("config.lualine-config")
-local telescope = require("config.telescope-config")
 
 
 set.wrap = false
