@@ -1,34 +1,10 @@
 vim.g.mapleader = " "
 
 require("config.lazy")
-require("lspconfig").clangd.setup({})
-require("lspconfig").tsserver.setup({
- on_attach = on_attach,
-  filetypes = { "typescript", "typescriptreact", "typescript.tsx", "javascript", "javascriptreact", "javascript.jsx" },
-  capabilities = capabilities
-})
-require("toggleterm").setup{}
-require('Comment').setup({
-    padding = true,
-    sticky = false,
-            toggler = {
-                line = '<leader>/',
-                block = '<leader>bc',
-            },
-            opleader = {
-                line = '<leader>/',
-                block = '<leader>b',
-            },
+require("config.lsp")
+require("config.comment")
+require("config.gitblame")
 
-})
-
--- GitBlame
-require('gitblame').setup {
-    --Note how the `gitblame_` prefix is omitted in `setup`
-    message_template = "<author> • <summary>",
-    enabled = false,
-}
--- End GitBlame
 local cmp = require('cmp')
 local has_words_before = function()
     unpack = unpack or table.unpack
@@ -145,7 +121,7 @@ require("nvim-tree").setup({
     },
 })
 require('neoscroll').setup()
-require("bufferline").setup{}
+require("bufferline").setup()
 require('nvim-autopairs').setup({})
 local set = vim.opt
 vim.opt.background = "dark" -- set this to dark or light

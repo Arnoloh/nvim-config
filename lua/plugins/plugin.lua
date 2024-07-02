@@ -1,9 +1,6 @@
 return {
     'L3MON4D3/LuaSnip',
     'saadparwaiz1/cmp_luasnip',
-    {
-        'akinsho/toggleterm.nvim', version = "*", config = true
-    },
     --git blame
     'f-person/git-blame.nvim',
     -- FIXME
@@ -57,10 +54,11 @@ return {
     'hrsh7th/cmp-path',
     'hrsh7th/cmp-cmdline',
     'hrsh7th/nvim-cmp',
+  
     {
-        'akinsho/bufferline.nvim'
+        'bufferline.nvim',  branch= "main", commit= "f6f00d9ac1a51483ac78418f9e63126119a70709" 
     },
-
+   
     { 'nvim-tree/nvim-web-devicons',
         commit = "20921d33c605ba24c8d0b76b379a54a9c83ba170"
     },

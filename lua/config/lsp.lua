@@ -31,7 +31,11 @@ end
 local servers = {
     clangd = {},
     pyright = {},
-    tsserver = {},
+    tsserver = {
+         on_attach = on_attach,
+         filetypes = { "typescript", "typescriptreact", "typescript.tsx", "javascript", "javascriptreact", "javascript.jsx" },
+         capabilities = capabilities
+    },
     rust_analyzer = {},
     html = {},
     jsonls = {},
