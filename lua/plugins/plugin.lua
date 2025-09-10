@@ -88,4 +88,7 @@ return {
     opts = {} ,
     'petertriho/cmp-git',
     'karb94/neoscroll.nvim',
+    --
+    -- COPILOT below
+    'github/copilot.vim'
 }
