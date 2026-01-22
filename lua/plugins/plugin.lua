@@ -25,6 +25,7 @@ return {
     "nvim-lua/plenary.nvim",
     {
         "nvim-treesitter/nvim-treesitter",
+        branch = 'master',
         build = ":TSUpdate",
         event = { "BufReadPost", "BufNewFile" },
         keys = {
